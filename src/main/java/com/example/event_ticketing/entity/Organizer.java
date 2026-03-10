@@ -17,12 +17,13 @@ public class Organizer {
     private String email;
 
     @Column(nullable = true)
-    // maybe change from string to int/number?
     private String phone;
 
     // relationship
     // need to do events
 
-    //@OneToMany(mappedBy = "organizer", cascade = CascadeType.ALL)
-    //private List<Event> events;
+    // do @ManyToOne
+    // @JoinColumn(name = "organizer_id") in events to finish relationship
+    @OneToMany(mappedBy = "organizer", cascade = CascadeType.ALL)
+    private List<Event> events;
 }
