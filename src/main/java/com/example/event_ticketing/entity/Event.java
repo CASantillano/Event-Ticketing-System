@@ -1,6 +1,9 @@
 package com.example.event_ticketing.entity;
 
+import com.example.event_ticketing.enums.EventStatus;
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -13,11 +16,11 @@ public class Event {
     @Column(nullable = false)
     private String title;
 
-    // date
-    // datetime?... event_date;
+    private LocalDateTime event_date;
 
-    // status
-    // enum ... status;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private EventStatus status;
 
     @Column(nullable = true)
     private String description;
@@ -27,10 +30,11 @@ public class Event {
     // maybe change var
     private List<TicketType> type;
 
-    //check syntax, and match to 3.3 schema
     @ManyToOne
     @JoinColumn(name = "organizer_id")
     private Organizer organizer;
+
+    @ManyToOne
     @JoinColumn(name = "venue_id")
     private Venue venue;
 }

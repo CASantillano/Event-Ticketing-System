@@ -1,7 +1,6 @@
 package com.example.event_ticketing.entity;
 
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "TicketType")
@@ -17,11 +16,11 @@ public class TicketType {
     private Integer quantity_available;
 
     // maybe double?
-    @Column(columnDefinition = "DECIMAL(7, 2) CHECK (price >= 0.0)")
+    @Column(columnDefinition = "DECIMAL(7, 2) CHECK (price >= 0.0)", nullable = false)
     private Double price;
 
     // relationship
-    //check
     @ManyToOne
     @JoinColumn(name="event_id")
+    private Event event;
 }

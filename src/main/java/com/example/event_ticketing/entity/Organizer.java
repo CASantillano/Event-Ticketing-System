@@ -21,10 +21,8 @@ public class Organizer {
     private String phone;
 
     // relationship
-    // need to do events
-
     // do @ManyToOne
-    // @JoinColumn(name = "organizer_id") in events to finish relationship
+    // @JoinColumn(name = "organizer_id") in event to finish relationship
     @OneToMany(mappedBy = "organizer", cascade = CascadeType.ALL)
     private List<Event> events;
 }
