@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VenueRepository extends JpaRepository<Venue, Integer> {
-    //
+    // create a new venue happens in service
 }

@@ -1,10 +1,13 @@
 package com.example.event_ticketing.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
 import java.util.List;
 
 @Entity
 @Table(name = "Attendee")
+@Data
 public class Attendee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,5 +22,4 @@ public class Attendee {
     // relationship
     @OneToMany(mappedBy = "attendee", cascade = CascadeType.ALL)
     private List<Booking> bookings;
-
 }

@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface OrganizerRepository extends JpaRepository<Organizer, Integer> {
-    //
+    //create a new organizer happens in service
 }

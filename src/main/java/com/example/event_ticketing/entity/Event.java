@@ -2,12 +2,14 @@ package com.example.event_ticketing.entity;
 
 import com.example.event_ticketing.enums.EventStatus;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name="Event")
+@Data
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,13 +30,13 @@ public class Event {
     // relationships
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     // maybe change var
-    private List<TicketType> type;
+    private List<TicketType> ticket_types;
 
     @ManyToOne
-    @JoinColumn(name = "organizer_id")
+    @JoinColumn(name = "organizer_id", nullable = false)
     private Organizer organizer;
 
     @ManyToOne
-    @JoinColumn(name = "venue_id")
+    @JoinColumn(name = "venue_id", nullable = false)
     private Venue venue;
 }

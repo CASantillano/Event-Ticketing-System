@@ -1,10 +1,13 @@
 package com.example.event_ticketing.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
 import java.util.List;
 
 @Entity
 @Table(name="Venue")
+@Data
 public class Venue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

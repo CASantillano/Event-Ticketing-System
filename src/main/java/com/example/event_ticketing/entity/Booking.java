@@ -2,11 +2,13 @@ package com.example.event_ticketing.entity;
 
 import com.example.event_ticketing.enums.PaymentStatus;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name="Booking")
+@Data
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +25,11 @@ public class Booking {
     private PaymentStatus payment_status;
 
     @ManyToOne
-    @JoinColumn(name = "attendee_id")
+    @JoinColumn(name = "attendee_id", nullable = false)
     private Attendee attendee;
 
     @ManyToOne
-    @JoinColumn(name = "ticket_type_id")
+    @JoinColumn(name = "ticket_type_id", nullable = false)
     private TicketType ticket_type;
 
 }

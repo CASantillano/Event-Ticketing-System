@@ -2,10 +2,11 @@ package com.example.event_ticketing.entity;
 
 import jakarta.persistence.*;
 import java.util.List;
-// look into using lombok, or manually do getters/setters
+import lombok.Data;
 
 @Entity
 @Table(name="Organizer")
+@Data
 public class Organizer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
