@@ -19,7 +19,7 @@ public class Booking {
     @Column(nullable = false, unique = true)
     private String booking_reference;
 
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false)
     private LocalDateTime booking_date;
 
     @Enumerated(EnumType.STRING)

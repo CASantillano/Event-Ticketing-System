@@ -8,10 +8,9 @@ import java.util.List;
 
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
-    // book a ticket in service?
-    // cancel a booking in service?
-
     //get all bookings for an attendee
-    //List<Booking> findByAttendde_Id(Integer id);?
-    boolean existsByBookingReference(String booking_reference);
+    List<Booking> findByAttendee_Id(Integer id);
+
+    // check if attendee already booked same ticket type
+    boolean existsByAttendeeIdAndTicketTypeId(Integer attendee_id, Integer ticket_type_id);
 }
