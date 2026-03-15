@@ -13,4 +13,5 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
     //get all bookings for an attendee
     //List<Booking> findByAttendde_Id(Integer id);?
+    boolean existsByBookingReference(String booking_reference);
 }

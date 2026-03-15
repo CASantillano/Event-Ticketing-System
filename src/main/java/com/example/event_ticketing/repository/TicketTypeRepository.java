@@ -8,5 +8,5 @@ import java.math.BigDecimal;
 
 @Repository
 public interface TicketTypeRepository extends JpaRepository<TicketType, Integer> {
-    boolean existsByPrice(BigDecimal price);
+    //
 }
