@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface AttendeeRepository extends JpaRepository<Attendee, Integer> {
     // register a new attendee happens in service
-
+    boolean existsByEmail(String email);
 }

@@ -2,6 +2,7 @@ package com.example.event_ticketing.entity;
 
 import com.example.event_ticketing.enums.PaymentStatus;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer booking_id;
 
+    @NotBlank(message = "Booking reference is required")
     @Column(nullable = false, unique = true)
     private String booking_reference;
 

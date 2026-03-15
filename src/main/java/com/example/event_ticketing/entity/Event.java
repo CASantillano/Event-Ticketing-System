@@ -2,6 +2,7 @@ package com.example.event_ticketing.entity;
 
 import com.example.event_ticketing.enums.EventStatus;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -15,9 +16,11 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer event_id;
 
+    @NotBlank(message = "Title is required")
     @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false)
     private LocalDateTime event_date;
 
     @Enumerated(EnumType.STRING)

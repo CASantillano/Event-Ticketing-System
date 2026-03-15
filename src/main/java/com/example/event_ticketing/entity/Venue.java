@@ -1,6 +1,7 @@
 package com.example.event_ticketing.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.util.List;
@@ -13,13 +14,19 @@ public class Venue {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer venue_id;
 
+    @NotBlank(message = "Name is required")
     @Column(nullable = false)
     private String name;
 
+    @NotBlank(message = "Address is required")
+    @Column(nullable = false)
     private String address;
 
+    @NotBlank(message = "City is required")
+    @Column(nullable = false)
     private String city;
 
+    @Column(nullable = false)
     private Integer total_capacity;
 
     // relationship

@@ -1,6 +1,7 @@
 package com.example.event_ticketing.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Data;
 
@@ -14,10 +15,12 @@ public class TicketType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ticket_type_id;
 
+    @NotBlank(message = "Name is required")
     @Column(nullable = false)
     // tier name
     private String name;
 
+    @Column(nullable = false)
     private Integer quantity_available;
 
     @PositiveOrZero
