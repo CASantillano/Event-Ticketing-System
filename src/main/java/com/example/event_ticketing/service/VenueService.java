@@ -8,4 +8,6 @@ import org.springframework.stereotype.Service;
 public class VenueService {
     @Autowired
     private VenueRepository venueRepository;
+
+    // create a new venue
 }

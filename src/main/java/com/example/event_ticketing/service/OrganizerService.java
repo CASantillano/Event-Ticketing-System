@@ -9,4 +9,6 @@ import org.springframework.stereotype.Service;
 public class OrganizerService {
     @Autowired
     private OrganizerRepository organizerRepository;
+
+    // create a new organizer
 }

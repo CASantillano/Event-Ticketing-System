@@ -9,4 +9,10 @@ import org.springframework.stereotype.Service;
 public class BookingService {
     @Autowired
     private BookingRepository bookingRepository;
+
+    // book a ticket
+
+    // cancel a booking
+
+    // get all bookings for an attendee
 }

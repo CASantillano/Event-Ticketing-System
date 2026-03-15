@@ -8,4 +8,12 @@ import org.springframework.stereotype.Service;
 public class EventService {
     @Autowired
     private EventRepository eventRepository;
+
+    // create a new event, validate
+
+    // list all upcoming events
+
+    // get event details with ticket types
+
+    // get total revenue for an event
 }
