@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AttendeeDTO{
+public class AttendeeBookingsDTO {
 //    private Integer attendee_id;
 //    private String name;
 //

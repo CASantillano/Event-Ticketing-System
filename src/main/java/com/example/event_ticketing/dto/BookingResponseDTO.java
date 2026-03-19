@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookingDTO{
+public class BookingResponseDTO {
     //
 }
