@@ -1,5 +1,6 @@
 package com.example.event_ticketing.service;
 
+import com.example.event_ticketing.dto.BookingResponseDTO;
 import com.example.event_ticketing.entity.Attendee;
 import com.example.event_ticketing.entity.Booking;
 import com.example.event_ticketing.entity.TicketType;
@@ -50,6 +51,17 @@ public class BookingService {
     }
 
     // cancel a booking
+    @Transactional
+    public Booking cancelBooking(Integer bookingId){
+        Booking booking = bookingRepository.findById(bookingId)
+                .orElseThrow(()-> new RuntimeException("Booking does not exist"));
+        if(booking.getPayment_status() == PaymentStatus.CANCELLED){
+            throw new RuntimeException("Booking already cancelled");
+        }
+        booking.getTicket_type().setQuantity_available(booking.getTicket_type().getQuantity_available()+1);
+        booking.setPayment_status(PaymentStatus.CANCELLED);
+        return bookingRepository.save(booking);
+    }
 
     // get all bookings for an attendee
 }
