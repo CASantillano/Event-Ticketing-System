@@ -13,13 +13,10 @@ public class VenueService {
 
     // create a new venue
     @Transactional
-    public Venue createVenue(String name, String address, String city, Integer total_capacity){
-        Venue venue = new Venue();
-        venue.setName(name);
-        venue.setAddress(address);
-        venue.setCity(city);
-        venue.setTotal_capacity(total_capacity);
-
+    public Venue createVenue(Venue venue){
+        if(venue.getTotal_capacity() <= 0){
+            throw new RuntimeException("Capacity must be greater than 0");
+        }
         return venueRepository.save(venue);
     }
 }

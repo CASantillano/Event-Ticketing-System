@@ -2,6 +2,7 @@ package com.example.event_ticketing.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class Venue {
     @Column(nullable = false)
     private String city;
 
+    @Positive
     @Column(nullable = false)
     private Integer total_capacity;
 

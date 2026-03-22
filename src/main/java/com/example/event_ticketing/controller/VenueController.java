@@ -1,7 +1,13 @@
 package com.example.event_ticketing.controller;
 
+import com.example.event_ticketing.dto.OrganizerDTO;
+import com.example.event_ticketing.dto.VenueDTO;
+import com.example.event_ticketing.entity.Organizer;
+import com.example.event_ticketing.entity.Venue;
 import com.example.event_ticketing.service.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,4 +18,15 @@ public class VenueController{
     private VenueService venueService;
 
     // create a new venue
+    @PostMapping
+    public VenueDTO createVenue(@RequestBody Venue venue){
+        Venue savedVenue = venueService.createVenue(venue);
+        return new VenueDTO(
+                savedVenue.getVenue_id(),
+                savedVenue.getName(),
+                savedVenue.getAddress(),
+                savedVenue.getCity(),
+                savedVenue.getTotal_capacity()
+        );
+    }
 }
