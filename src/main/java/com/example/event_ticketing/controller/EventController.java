@@ -2,9 +2,12 @@ package com.example.event_ticketing.controller;
 
 import com.example.event_ticketing.dto.EventResponseDTO;
 import com.example.event_ticketing.entity.Event;
+import com.example.event_ticketing.enums.EventStatus;
 import com.example.event_ticketing.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/events")
@@ -30,6 +33,10 @@ public class EventController{
     }
 
     // list all upcoming events
+    @GetMapping
+    public List<EventResponseDTO> getUpcomingEvents(){
+        return eventService.getAllUpcomingEvents();
+    }
 
     // get all upcoming event details with ticket types
 

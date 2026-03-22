@@ -1,8 +1,10 @@
 package com.example.event_ticketing.service;
 
+import com.example.event_ticketing.dto.EventResponseDTO;
 import com.example.event_ticketing.entity.Event;
 import com.example.event_ticketing.entity.Organizer;
 import com.example.event_ticketing.entity.Venue;
+import com.example.event_ticketing.enums.EventStatus;
 import com.example.event_ticketing.repository.EventRepository;
 import com.example.event_ticketing.repository.OrganizerRepository;
 import com.example.event_ticketing.repository.VenueRepository;
@@ -10,6 +12,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,6 +36,17 @@ public class EventService {
     }
 
     // list all upcoming events
+    public List<EventResponseDTO> getAllUpcomingEvents(){
+        return eventRepository.findByStatus(EventStatus.UPCOMING).stream().map(
+                event -> new EventResponseDTO(
+                        event.getEvent_id(),
+                        event.getTitle(),
+                        event.getEvent_date(),
+                        event.getStatus(),
+                        event.getDescription()
+                )
+        ).collect(Collectors.toList());
+    }
 
     // get event details with ticket types
 

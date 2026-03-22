@@ -12,7 +12,6 @@ import java.util.List;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event, Integer> {
-    // get event details with ticket types
     List<Event> findByStatus(EventStatus status);
 
     // get total revenue for an event
