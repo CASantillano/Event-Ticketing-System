@@ -1,9 +1,10 @@
 package com.example.event_ticketing.controller;
 
+import com.example.event_ticketing.dto.EventResponseDTO;
+import com.example.event_ticketing.entity.Event;
 import com.example.event_ticketing.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/events")
@@ -12,6 +13,21 @@ public class EventController{
     private EventService eventService;
 
     // create a new event
+    @PostMapping
+    public EventResponseDTO createEvent(
+            @RequestBody Event event,
+            @RequestParam Integer organizerId,
+            @RequestParam Integer venueId
+    ){
+        Event savedEvent = eventService.createEvent(event, organizerId, venueId);
+        return new EventResponseDTO(
+                savedEvent.getEvent_id(),
+                savedEvent.getTitle(),
+                savedEvent.getEvent_date(),
+                savedEvent.getStatus(),
+                savedEvent.getDescription()
+        );
+    }
 
     // list all upcoming events
 
