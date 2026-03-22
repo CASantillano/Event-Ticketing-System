@@ -1,8 +1,6 @@
 package com.example.event_ticketing.controller;
 
-import com.example.event_ticketing.dto.OrganizerDTO;
 import com.example.event_ticketing.dto.VenueDTO;
-import com.example.event_ticketing.entity.Organizer;
 import com.example.event_ticketing.entity.Venue;
 import com.example.event_ticketing.service.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;

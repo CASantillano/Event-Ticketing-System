@@ -13,13 +13,10 @@ public class AttendeeService {
 
     // register a new attendee, email must be unique
     @Transactional
-    public Attendee createAttendee(String name, String email){
-        if (attendeeRepository.existsByEmail(email)){
+    public Attendee registerAttendee(Attendee attendee){
+        if (attendeeRepository.existsByEmail(attendee.getEmail())){
             throw new RuntimeException("Email already registered");
         }
-        Attendee attendee = new Attendee();
-        attendee.setName(name);
-        attendee.setEmail(email);
         return attendeeRepository.save(attendee);
     }
 }

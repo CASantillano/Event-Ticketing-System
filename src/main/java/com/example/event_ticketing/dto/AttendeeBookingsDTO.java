@@ -8,14 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AttendeeBookingsDTO {
-//    private Integer attendee_id;
-//    private String name;
-//
-//    List<BookingDTO> getAllBookings(){
-//        return BookingRepository.findAll().stream().map(
-//                booking -> new BookingDTO(
-//                        //
-//                ).collect(Collectors.toList());
-//        )
-//    }
+    private Integer attendee_id;
+    private String name;
+    private String email;
 }
