@@ -2,7 +2,6 @@ package com.example.event_ticketing.controller;
 
 import com.example.event_ticketing.dto.EventResponseDTO;
 import com.example.event_ticketing.entity.Event;
-import com.example.event_ticketing.enums.EventStatus;
 import com.example.event_ticketing.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
