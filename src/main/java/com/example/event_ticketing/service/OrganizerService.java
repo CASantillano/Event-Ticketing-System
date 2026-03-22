@@ -13,13 +13,10 @@ public class OrganizerService {
 
     // create a new organizer
     @Transactional
-    public Organizer createOrganizer(String name, String email){
-        if(organizerRepository.existsByEmail(email)){
+    public Organizer createOrganizer(Organizer organizer){
+        if(organizerRepository.existsByEmail(organizer.getEmail())){
             throw new RuntimeException("Email is already registered");
         }
-        Organizer organizer = new Organizer();
-        organizer.setEmail(email);
-        organizer.setName(name);
         return organizerRepository.save(organizer);
     }
 }
