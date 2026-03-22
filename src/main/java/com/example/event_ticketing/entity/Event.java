@@ -32,8 +32,7 @@ public class Event {
 
     // relationships
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    // maybe change var
-    private List<TicketType> ticket_types;
+    private List<TicketType> ticketTypes;
 
     @ManyToOne
     @JoinColumn(name = "organizer_id", nullable = false)

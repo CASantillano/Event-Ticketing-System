@@ -28,7 +28,10 @@ public class EventController{
                 savedEvent.getTitle(),
                 savedEvent.getEvent_date(),
                 savedEvent.getStatus(),
-                savedEvent.getDescription()
+                savedEvent.getDescription(),
+                savedEvent.getOrganizer().getName(),
+                savedEvent.getVenue().getName(),
+                null
         );
     }
 
@@ -38,7 +41,11 @@ public class EventController{
         return eventService.getAllUpcomingEvents();
     }
 
-    // get all upcoming event details with ticket types
+    // get event details with ticket types
+    @GetMapping("/{id}")
+    public EventResponseDTO getEvent(@PathVariable Integer eventId){
+        return eventService.getEvent(eventId);
+    }
 
     // get total revenue for an event
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,4 +17,7 @@ public class EventResponseDTO {
     private LocalDateTime event_date;
     private EventStatus status;
     private String description;
+    private  String organizerName;
+    private String venueName;
+    private List<TicketTypeDTO> ticketTypes;
 }
