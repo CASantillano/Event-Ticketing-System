@@ -3,7 +3,6 @@ package com.example.event_ticketing.service;
 import com.example.event_ticketing.dto.AttendeeBookingsDTO;
 import com.example.event_ticketing.dto.BookingResponseDTO;
 import com.example.event_ticketing.entity.Attendee;
-import com.example.event_ticketing.entity.Booking;
 import com.example.event_ticketing.repository.AttendeeRepository;
 import com.example.event_ticketing.repository.BookingRepository;
 import jakarta.transaction.Transactional;
@@ -34,17 +33,17 @@ public class AttendeeService {
        Attendee attendee = attendeeRepository.findById(attendeeId)
                .orElseThrow(()-> new RuntimeException("Attendee not found"));
 
-        List<BookingResponseDTO> bookings = bookingRepository.findByAttendee_Id(attendeeId)
+        List<BookingResponseDTO> bookings = bookingRepository.findByAttendee_AttendeeId(attendeeId)
                 .stream().map(
                 booking -> new BookingResponseDTO(
-                        booking.getBooking_id(),
-                        booking.getBooking_reference(),
-                        booking.getBooking_date(),
-                        booking.getPayment_status(),
+                        booking.getBookingId(),
+                        booking.getBookingReference(),
+                        booking.getBookingDate(),
+                        booking.getPaymentStatus(),
                         booking.getAttendee().getName(),
-                        booking.getTicket_type().getEvent().getTitle(),
-                        booking.getTicket_type().getName(),
-                        booking.getTicket_type().getPrice()
+                        booking.getTicketType().getEvent().getTitle(),
+                        booking.getTicketType().getName(),
+                        booking.getTicketType().getPrice()
                 )
         ).collect(Collectors.toList());
         return new AttendeeBookingsDTO(

@@ -12,9 +12,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EventResponseDTO {
-    private Integer event_id;
+    private Integer eventId;
     private String title;
-    private LocalDateTime event_date;
+    private LocalDateTime eventDate;
     private EventStatus status;
     private String description;
     private  String organizerName;

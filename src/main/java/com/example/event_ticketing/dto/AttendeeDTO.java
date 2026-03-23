@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AttendeeDTO {
-    private Integer attendee_id;
+    private Integer attendeeId;
     private String name;
     private String email;
 }

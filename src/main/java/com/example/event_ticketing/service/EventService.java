@@ -13,7 +13,6 @@ import com.example.event_ticketing.repository.OrganizerRepository;
 import com.example.event_ticketing.repository.VenueRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -46,9 +45,9 @@ public class EventService {
     public List<EventResponseDTO> getAllUpcomingEvents(){
         return eventRepository.findByStatus(EventStatus.UPCOMING).stream().map(
                 event -> new EventResponseDTO(
-                        event.getEvent_id(),
+                        event.getEventId(),
                         event.getTitle(),
-                        event.getEvent_date(),
+                        event.getEventDate(),
                         event.getStatus(),
                         event.getDescription(),
                         event.getOrganizer().getName(),
@@ -66,18 +65,18 @@ public class EventService {
         List<TicketTypeDTO> tickets = new ArrayList<>();
         for (TicketType t: event.getTicketTypes()){
             TicketTypeDTO tDTO = new TicketTypeDTO(
-                    t.getTicket_type_id(),
+                    t.getTicketTypeId(),
                     t.getName(),
-                    t.getQuantity_available(),
+                    t.getQuantityAvailable(),
                     t.getPrice()
             );
             tickets.add(tDTO);
         }
 
         return new EventResponseDTO(
-                event.getEvent_id(),
+                event.getEventId(),
                 event.getTitle(),
-                event.getEvent_date(),
+                event.getEventDate(),
                 event.getStatus(),
                 event.getDescription(),
                 event.getOrganizer().getName(),

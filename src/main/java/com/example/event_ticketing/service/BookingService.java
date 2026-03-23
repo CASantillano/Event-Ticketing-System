@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class BookingService {
@@ -27,26 +25,28 @@ public class BookingService {
     // book a ticket
     @Transactional
     public Booking bookTicket(Booking booking){
-        TicketType ticketType = ticketTypeRepository.findById(booking.getTicket_type().getTicket_type_id())
+        TicketType ticketType = ticketTypeRepository.findById(booking.getTicketType().getTicketTypeId())
                 .orElseThrow(() -> new RuntimeException("Ticket type not found"));
-        Attendee attendee = attendeeRepository.findById(booking.getAttendee().getAttendee_id())
+        Attendee attendee = attendeeRepository.findById(booking.getAttendee().getAttendeeId())
                 .orElseThrow(() -> new RuntimeException("Attendee not found"));
-        if((ticketType.getQuantity_available() <= 0)){
+        if((ticketType.getQuantityAvailable() <= 0)){
             throw new RuntimeException("Sorry, this ticket is sold out.");
         }
-        if(bookingRepository.existsByAttendeeIdAndTicketTypeId(attendee.getAttendee_id(), ticketType.getTicket_type_id())){
+        if(bookingRepository.existsByAttendee_AttendeeIdAndTicketType_TicketTypeId(
+                attendee.getAttendeeId(),
+                ticketType.getTicketTypeId())){
             throw new RuntimeException("You have already booked this ticket type.");
         }
 
-        ticketType.setQuantity_available(ticketType.getQuantity_available()-1);
-        booking.setBooking_date(LocalDateTime.now());
-        booking.setPayment_status(PaymentStatus.CONFIRMED);
-        booking.setTicket_type(ticketType);
+        ticketType.setQuantityAvailable(ticketType.getQuantityAvailable()-1);
+        booking.setBookingDate(LocalDateTime.now());
+        booking.setPaymentStatus(PaymentStatus.CONFIRMED);
+        booking.setTicketType(ticketType);
         booking.setAttendee(attendee);
-        Booking savedBooking = bookingRepository.save(booking);
+        Booking savedBooking = bookingRepository.saveAndFlush(booking);
 
-        savedBooking.setBooking_reference("TKT-" + String.valueOf(LocalDateTime.now().getYear()) +
-                "-" + String.format("%05d", savedBooking.getBooking_id()));
+        savedBooking.setBookingReference("TKT-" + String.valueOf(LocalDateTime.now().getYear()) +
+                "-" + String.format("%05d", savedBooking.getBookingId()));
 
         return bookingRepository.save(savedBooking);
     }
@@ -56,11 +56,11 @@ public class BookingService {
     public Booking cancelBooking(Integer bookingId){
         Booking booking = bookingRepository.findById(bookingId)
                 .orElseThrow(()-> new RuntimeException("Booking does not exist"));
-        if(booking.getPayment_status() == PaymentStatus.CANCELLED){
+        if(booking.getPaymentStatus() == PaymentStatus.CANCELLED){
             throw new RuntimeException("Booking already cancelled");
         }
-        booking.getTicket_type().setQuantity_available(booking.getTicket_type().getQuantity_available()+1);
-        booking.setPayment_status(PaymentStatus.CANCELLED);
+        booking.getTicketType().setQuantityAvailable(booking.getTicketType().getQuantityAvailable()+1);
+        booking.setPaymentStatus(PaymentStatus.CANCELLED);
         return bookingRepository.save(booking);
     }
 }

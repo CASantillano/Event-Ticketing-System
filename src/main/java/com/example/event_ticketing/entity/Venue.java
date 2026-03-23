@@ -1,5 +1,7 @@
 package com.example.event_ticketing.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
@@ -13,7 +15,8 @@ import java.util.List;
 public class Venue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer venue_id;
+    @Column(name = "venue_id")
+    private Integer venueId;
 
     @NotBlank(message = "Name is required")
     @Column(nullable = false)
@@ -29,11 +32,12 @@ public class Venue {
 
     @Positive
     @Column(nullable = false)
-    private Integer total_capacity;
+    private Integer totalCapacity;
 
     // relationship
     // venue -> event = one to many
     // event -> venue = joinColumn(name = "venue_id") many to one
     @OneToMany(mappedBy = "venue", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Event> events;
 }

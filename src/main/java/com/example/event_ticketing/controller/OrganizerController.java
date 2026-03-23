@@ -18,7 +18,7 @@ public class OrganizerController{
     public ResponseEntity<OrganizerDTO> createOrganizer(@RequestBody Organizer organizer){
         Organizer savedOrganizer = organizerService.createOrganizer(organizer);
         OrganizerDTO dto = new OrganizerDTO(
-                savedOrganizer.getOrganizer_id(),
+                savedOrganizer.getOrganizerId(),
                 savedOrganizer.getName(),
                 savedOrganizer.getEmail(),
                 savedOrganizer.getPhone()

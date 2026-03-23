@@ -1,5 +1,7 @@
 package com.example.event_ticketing.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -13,7 +15,8 @@ import java.math.BigDecimal;
 public class TicketType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ticket_type_id;
+    @Column(name = "ticket_type_id")
+    private Integer ticketTypeId;
 
     @NotBlank(message = "Name is required")
     @Column(nullable = false)
@@ -21,7 +24,7 @@ public class TicketType {
     private String name;
 
     @Column(nullable = false)
-    private Integer quantity_available;
+    private Integer quantityAvailable;
 
     @PositiveOrZero
     @Column(nullable = false, precision = 7, scale = 2)

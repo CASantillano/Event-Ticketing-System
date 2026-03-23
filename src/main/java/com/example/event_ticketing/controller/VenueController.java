@@ -21,11 +21,11 @@ public class VenueController{
     public ResponseEntity<VenueDTO> createVenue(@RequestBody Venue venue){
         Venue savedVenue = venueService.createVenue(venue);
         VenueDTO dto = new VenueDTO(
-                savedVenue.getVenue_id(),
+                savedVenue.getVenueId(),
                 savedVenue.getName(),
                 savedVenue.getAddress(),
                 savedVenue.getCity(),
-                savedVenue.getTotal_capacity()
+                savedVenue.getTotalCapacity()
         );
         return ResponseEntity.status(201).body(dto);
     }

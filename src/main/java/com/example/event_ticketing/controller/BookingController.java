@@ -18,14 +18,14 @@ public class BookingController{
     public BookingResponseDTO bookTicket(@RequestBody Booking booking){
         Booking savedBooking = bookingService.bookTicket(booking);
         return new BookingResponseDTO(
-                savedBooking.getBooking_id(),
-                savedBooking.getBooking_reference(),
-                savedBooking.getBooking_date(),
-                savedBooking.getPayment_status(),
+                savedBooking.getBookingId(),
+                savedBooking.getBookingReference(),
+                savedBooking.getBookingDate(),
+                savedBooking.getPaymentStatus(),
                 savedBooking.getAttendee().getName(),
-                savedBooking.getTicket_type().getEvent().getTitle(),
-                savedBooking.getTicket_type().getName(),
-                savedBooking.getTicket_type().getPrice()
+                savedBooking.getTicketType().getEvent().getTitle(),
+                savedBooking.getTicketType().getName(),
+                savedBooking.getTicketType().getPrice()
         );
     }
 
@@ -34,14 +34,14 @@ public class BookingController{
     public BookingResponseDTO cancelBooking(@PathVariable Integer id){
         Booking savedBooking = bookingService.cancelBooking(id);
         return new BookingResponseDTO(
-                savedBooking.getBooking_id(),
-                savedBooking.getBooking_reference(),
-                savedBooking.getBooking_date(),
-                savedBooking.getPayment_status(),
+                savedBooking.getBookingId(),
+                savedBooking.getBookingReference(),
+                savedBooking.getBookingDate(),
+                savedBooking.getPaymentStatus(),
                 savedBooking.getAttendee().getName(),
-                savedBooking.getTicket_type().getEvent().getTitle(),
-                savedBooking.getTicket_type().getName(),
-                savedBooking.getTicket_type().getPrice()
+                savedBooking.getTicketType().getEvent().getTitle(),
+                savedBooking.getTicketType().getName(),
+                savedBooking.getTicketType().getPrice()
         );
     }
 }

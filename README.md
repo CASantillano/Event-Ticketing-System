@@ -13,6 +13,7 @@ This project is an event ticketing system........
 * POST /api/organizers
 * POST /api/venues
 * POST /api/events
+* POST /api/tickettypes
 * GET /api/events
 * GET /api/events/{id}
 * POST /api/attendees
@@ -23,3 +24,19 @@ This project is an event ticketing system........
 
 ---
 ## Screenshots
+### Create an organizer:
+![PostOrganizer](images/PostOrganizer.png)
+
+### Create a venue:
+![PostVenue](images/PostVenue.png)
+
+### Create a new event:
+![PostEvents](images/PostEvents.png)
+
+### Create a ticket type:
+![PostTicket](images/PostTicket.png)
+
+### List all upcoming events:
+
+### Register a new attendee
+![PostAttendee](images/PostAttendees.png)

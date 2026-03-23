@@ -14,7 +14,7 @@ public class VenueService {
     // create a new venue
     @Transactional
     public Venue createVenue(Venue venue){
-        if(venue.getTotal_capacity() <= 0){
+        if(venue.getTotalCapacity() <= 0){
             throw new RuntimeException("Capacity must be greater than 0");
         }
         return venueRepository.save(venue);

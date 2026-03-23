@@ -1,6 +1,5 @@
 package com.example.event_ticketing.dto;
 
-import com.example.event_ticketing.entity.TicketType;
 import com.example.event_ticketing.enums.PaymentStatus;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -13,10 +12,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookingResponseDTO {
-    private Integer booking_id;
-    private String booking_reference;
-    private LocalDateTime booking_date;
-    private PaymentStatus payment_status;
+    private Integer bookingId;
+    private String bookingReference;
+    private LocalDateTime bookingDate;
+    private PaymentStatus paymentStatus;
     private String attendeeName;
     private String eventTitle;
     private String ticketTypeName;

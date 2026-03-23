@@ -24,9 +24,9 @@ public class EventController{
     ){
         Event savedEvent = eventService.createEvent(event, organizerId, venueId);
         return new EventResponseDTO(
-                savedEvent.getEvent_id(),
+                savedEvent.getEventId(),
                 savedEvent.getTitle(),
-                savedEvent.getEvent_date(),
+                savedEvent.getEventDate(),
                 savedEvent.getStatus(),
                 savedEvent.getDescription(),
                 savedEvent.getOrganizer().getName(),

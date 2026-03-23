@@ -1,6 +1,9 @@
 package com.example.event_ticketing.entity;
 
 import com.example.event_ticketing.enums.EventStatus;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -14,14 +17,15 @@ import java.util.List;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer event_id;
+    @Column(name = "event_id")
+    private Integer eventId;
 
     @NotBlank(message = "Title is required")
     @Column(nullable = false)
     private String title;
 
     @Column(nullable = false)
-    private LocalDateTime event_date;
+    private LocalDateTime eventDate;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -32,6 +36,7 @@ public class Event {
 
     // relationships
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<TicketType> ticketTypes;
 
     @ManyToOne

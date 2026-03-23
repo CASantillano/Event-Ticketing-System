@@ -10,8 +10,8 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TicketTypeDTO {
-    private Integer ticket_type_id;
+    private Integer ticketTypeId;
     private String name;
-    private Integer quantity_available;
+    private Integer quantityAvailable;
     private BigDecimal price;
 }

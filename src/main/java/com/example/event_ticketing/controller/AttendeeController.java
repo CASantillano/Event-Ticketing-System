@@ -21,7 +21,7 @@ public class AttendeeController{
     public AttendeeDTO registerAttendee(@RequestBody Attendee attendee) {
         Attendee savedAttendee = attendeeService.registerAttendee(attendee);
         return new AttendeeDTO(
-                savedAttendee.getAttendee_id(),
+                savedAttendee.getAttendeeId(),
                 savedAttendee.getName(),
                 savedAttendee.getEmail()
         );

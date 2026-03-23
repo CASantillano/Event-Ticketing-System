@@ -1,5 +1,7 @@
 package com.example.event_ticketing.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -12,7 +14,8 @@ import lombok.Data;
 public class Organizer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer organizer_id;
+    @Column(name = "organizer_id")
+    private Integer organizerId;
 
     @NotBlank(message = "Name is required")
     @Column(nullable = false)
@@ -29,5 +32,6 @@ public class Organizer {
     // do @ManyToOne
     // @JoinColumn(name = "organizer_id") in event to finish relationship
     @OneToMany(mappedBy = "organizer", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Event> events;
 }

@@ -15,9 +15,9 @@ public interface EventRepository extends JpaRepository<Event, Integer> {
     List<Event> findByStatus(EventStatus status);
 
     // get total revenue for an event
-    @Query("SELECT SUM(b.ticket_type.price) " +
+    @Query("SELECT SUM(b.ticketType.price) " +
             "FROM Booking b " +
-            "WHERE b.ticket_type.event.event_id = :event_id " +
-            "AND b.payment_status = com.example.event_ticketing.enums.PaymentStatus.CONFIRMED")
-    BigDecimal calculateRevenueByEventId(@Param("event_id") Integer event_id);
+            "WHERE b.ticketType.event.eventId = :eventId " +
+            "AND b.paymentStatus = com.example.event_ticketing.enums.PaymentStatus.CONFIRMED")
+    BigDecimal calculateRevenueByEventId(@Param("eventId") Integer eventId);
 }

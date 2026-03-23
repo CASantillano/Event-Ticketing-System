@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class VenueDTO {
-    private Integer venue_id;
+    private Integer venueId;
     private String name;
     private String address;
     private String city;
-    private Integer total_capacity;
+    private Integer totalCapacity;
 }
