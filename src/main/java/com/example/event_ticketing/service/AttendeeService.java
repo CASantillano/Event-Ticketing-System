@@ -1,5 +1,6 @@
 package com.example.event_ticketing.service;
 
+import com.example.event_ticketing.dto.AttendeeBookingsDTO;
 import com.example.event_ticketing.dto.BookingResponseDTO;
 import com.example.event_ticketing.entity.Attendee;
 import com.example.event_ticketing.entity.Booking;
@@ -29,10 +30,12 @@ public class AttendeeService {
     }
 
     // get all bookings for an attendee
-    public List<BookingResponseDTO> getBookingsByAttendee(Integer attendeeId){
-        List<Booking> bookings = bookingRepository.findByAttendee_Id(attendeeId);
+    public AttendeeBookingsDTO getBookingsByAttendee(Integer attendeeId){
+       Attendee attendee = attendeeRepository.findById(attendeeId)
+               .orElseThrow(()-> new RuntimeException("Attendee not found"));
 
-        return bookings.stream().map(
+        List<BookingResponseDTO> bookings = bookingRepository.findByAttendee_Id(attendeeId)
+                .stream().map(
                 booking -> new BookingResponseDTO(
                         booking.getBooking_id(),
                         booking.getBooking_reference(),
@@ -44,5 +47,9 @@ public class AttendeeService {
                         booking.getTicket_type().getPrice()
                 )
         ).collect(Collectors.toList());
+        return new AttendeeBookingsDTO(
+                attendee.getName(),
+                bookings
+        );
     }
 }

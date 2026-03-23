@@ -1,6 +1,7 @@
 package com.example.event_ticketing.service;
 
 import com.example.event_ticketing.dto.EventResponseDTO;
+import com.example.event_ticketing.dto.RevenueDTO;
 import com.example.event_ticketing.dto.TicketTypeDTO;
 import com.example.event_ticketing.entity.Event;
 import com.example.event_ticketing.entity.Organizer;
@@ -86,11 +87,17 @@ public class EventService {
     }
 
     // get total revenue for an event
-    public BigDecimal getRevenue(Integer eventId){
+    public RevenueDTO getRevenue(Integer eventId){
+        Event event = eventRepository.findById(eventId)
+                .orElseThrow(()-> new RuntimeException("Event not found"));
+
         BigDecimal revenue = eventRepository.calculateRevenueByEventId(eventId);
         if(revenue == null){
-            return BigDecimal.ZERO;
+            revenue = BigDecimal.ZERO;
         }
-        return revenue;
+        return new RevenueDTO(
+                event.getTitle(),
+                revenue
+        );
     }
 }

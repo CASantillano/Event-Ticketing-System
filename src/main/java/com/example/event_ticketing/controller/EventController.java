@@ -1,12 +1,12 @@
 package com.example.event_ticketing.controller;
 
 import com.example.event_ticketing.dto.EventResponseDTO;
+import com.example.event_ticketing.dto.RevenueDTO;
 import com.example.event_ticketing.entity.Event;
 import com.example.event_ticketing.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -49,7 +49,7 @@ public class EventController{
 
     // get total revenue for an event
     @GetMapping("/{id}/revenue")
-    public BigDecimal getRevenue(@PathVariable("id") Integer eventId){
+    public RevenueDTO getRevenue(@PathVariable("id") Integer eventId){
         return eventService.getRevenue(eventId);
     }
 }

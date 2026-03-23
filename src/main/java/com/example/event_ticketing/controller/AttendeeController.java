@@ -1,6 +1,7 @@
 package com.example.event_ticketing.controller;
 
 import com.example.event_ticketing.dto.AttendeeBookingsDTO;
+import com.example.event_ticketing.dto.AttendeeDTO;
 import com.example.event_ticketing.dto.BookingResponseDTO;
 import com.example.event_ticketing.entity.Attendee;
 import com.example.event_ticketing.service.AttendeeService;
@@ -17,9 +18,9 @@ public class AttendeeController{
 
     // register a new attendee
     @PostMapping
-    public AttendeeBookingsDTO registerAttendee(@RequestBody Attendee attendee) {
+    public AttendeeDTO registerAttendee(@RequestBody Attendee attendee) {
         Attendee savedAttendee = attendeeService.registerAttendee(attendee);
-        return new AttendeeBookingsDTO(
+        return new AttendeeDTO(
                 savedAttendee.getAttendee_id(),
                 savedAttendee.getName(),
                 savedAttendee.getEmail()
@@ -28,7 +29,7 @@ public class AttendeeController{
 
     // get all bookings for an attendee
     @GetMapping("/{id}/bookings")
-    public List<BookingResponseDTO> getBookingsByAttendee(@RequestParam Integer attendeeId){
+    public AttendeeBookingsDTO getBookingsByAttendee(@PathVariable Integer attendeeId){
         return attendeeService.getBookingsByAttendee(attendeeId);
     }
 }
