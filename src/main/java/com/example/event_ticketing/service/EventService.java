@@ -12,8 +12,10 @@ import com.example.event_ticketing.repository.OrganizerRepository;
 import com.example.event_ticketing.repository.VenueRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -84,4 +86,11 @@ public class EventService {
     }
 
     // get total revenue for an event
+    public BigDecimal getRevenue(Integer eventId){
+        BigDecimal revenue = eventRepository.calculateRevenueByEventId(eventId);
+        if(revenue == null){
+            return BigDecimal.ZERO;
+        }
+        return revenue;
+    }
 }
