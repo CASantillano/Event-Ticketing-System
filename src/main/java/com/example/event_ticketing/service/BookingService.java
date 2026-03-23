@@ -1,6 +1,5 @@
 package com.example.event_ticketing.service;
 
-import com.example.event_ticketing.dto.BookingResponseDTO;
 import com.example.event_ticketing.entity.Attendee;
 import com.example.event_ticketing.entity.Booking;
 import com.example.event_ticketing.entity.TicketType;
@@ -13,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BookingService {
@@ -62,6 +63,4 @@ public class BookingService {
         booking.setPayment_status(PaymentStatus.CANCELLED);
         return bookingRepository.save(booking);
     }
-
-    // get all bookings for an attendee
 }
