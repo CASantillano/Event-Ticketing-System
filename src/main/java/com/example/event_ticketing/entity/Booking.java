@@ -1,10 +1,7 @@
 package com.example.event_ticketing.entity;
 
 import com.example.event_ticketing.enums.PaymentStatus;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.time.LocalDateTime;

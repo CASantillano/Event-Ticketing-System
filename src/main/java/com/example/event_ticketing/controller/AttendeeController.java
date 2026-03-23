@@ -2,13 +2,11 @@ package com.example.event_ticketing.controller;
 
 import com.example.event_ticketing.dto.AttendeeBookingsDTO;
 import com.example.event_ticketing.dto.AttendeeDTO;
-import com.example.event_ticketing.dto.BookingResponseDTO;
 import com.example.event_ticketing.entity.Attendee;
 import com.example.event_ticketing.service.AttendeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/attendees")
