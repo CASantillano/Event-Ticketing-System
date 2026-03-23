@@ -5,7 +5,10 @@ CWID: 884464942
 
 ---
 ### Overview:
-This project is an event ticketing system........
+This project is an event ticketing system, that is a RESTful backend application using Spring Boot and PostgreSQL.
+It is a practical implementation of common backend practices, such as returning proper HTTP status codes and
+using @Transactional to avoid any potential idempotency issues. This project utilizes a three-layer architecture
+and handles relationships between organizers, venues, events, and attendees.
 
 ---
 
@@ -37,6 +40,22 @@ This project is an event ticketing system........
 ![PostTicket](images/PostTicket.png)
 
 ### List all upcoming events:
+![GetUpcomingEvents](images/GetUpcomingEvents.png)
+
+### Get event details with ticket types:
+![GetEventDetails](images/GetEventDetails.png)
 
 ### Register a new attendee
 ![PostAttendee](images/PostAttendees.png)
+
+### Book a ticket
+![PostBooking](images/PostBooking.png)
+
+### Cancel a booking
+![PutBooking](images/PutBooking.png)
+
+### Get total revenue for an event
+![GetRevenue](images/GetRevenue.png)
+
+### Get all bookings for an attendee
+![GetBookingsForAttendees](images/GetBookingsForAttendees.png)

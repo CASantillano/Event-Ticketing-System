@@ -42,7 +42,7 @@ public class EventController{
     }
 
     // get event details with ticket types
-    @GetMapping("/{id}")
+    @GetMapping("/{eventId}")
     public EventResponseDTO getEvent(@PathVariable Integer eventId){
         return eventService.getEvent(eventId);
     }

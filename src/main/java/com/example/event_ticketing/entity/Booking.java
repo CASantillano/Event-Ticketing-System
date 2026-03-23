@@ -17,8 +17,7 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bookingId;
 
-    @NotBlank(message = "Booking reference is required")
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String bookingReference;
 
     @Column(nullable = false, updatable = false)
@@ -33,7 +32,6 @@ public class Booking {
     private Attendee attendee;
 
     @ManyToOne
-    @JoinColumn(name = "ticketTypeId", nullable = false)
+    @JoinColumn(name = "ticket_type_id", nullable = false)
     private TicketType ticketType;
-
 }

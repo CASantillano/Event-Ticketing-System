@@ -28,7 +28,7 @@ public class AttendeeController{
     }
 
     // get all bookings for an attendee
-    @GetMapping("/{id}/bookings")
+    @GetMapping("/{attendeeId}/bookings")
     public AttendeeBookingsDTO getBookingsByAttendee(@PathVariable Integer attendeeId){
         return attendeeService.getBookingsByAttendee(attendeeId);
     }

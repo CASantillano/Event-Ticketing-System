@@ -37,7 +37,7 @@ public class BookingService {
                 ticketType.getTicketTypeId())){
             throw new RuntimeException("You have already booked this ticket type.");
         }
-
+        booking.setBookingReference("PENDING");
         ticketType.setQuantityAvailable(ticketType.getQuantityAvailable()-1);
         booking.setBookingDate(LocalDateTime.now());
         booking.setPaymentStatus(PaymentStatus.CONFIRMED);
