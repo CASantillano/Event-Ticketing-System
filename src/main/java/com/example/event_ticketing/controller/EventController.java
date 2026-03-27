@@ -48,8 +48,8 @@ public class EventController{
     }
 
     // get total revenue for an event
-    @GetMapping("/{id}/revenue")
-    public RevenueDTO getRevenue(@PathVariable("id") Integer eventId){
+    @GetMapping("/{eventId}/revenue")
+    public RevenueDTO getRevenue(@PathVariable Integer eventId){
         return eventService.getRevenue(eventId);
     }
 }

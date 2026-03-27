@@ -18,12 +18,12 @@ and handles relationships between organizers, venues, events, and attendees.
 * POST /api/events
 * POST /api/tickettypes
 * GET /api/events
-* GET /api/events/{id}
+* GET /api/events/{eventId}
 * POST /api/attendees
 * POST /api/bookings
 * PUT /api/bookings/{id}/cancel
-* GET /api/events/{id}/revenue
-* GET /api/attendees/{id}/bookings
+* GET /api/events/{eventId}/revenue
+* GET /api/attendees/{attendeeId}/bookings
 
 ---
 ## Screenshots
@@ -43,7 +43,7 @@ and handles relationships between organizers, venues, events, and attendees.
 ![GetUpcomingEvents](images/GetUpcomingEvents.png)
 
 ### Get event details with ticket types:
-![GetEventDetails](images/GetEventDetails.png)
+![GetEventDetails](images/GetEventDetails2.png)
 
 ### Register a new attendee
 ![PostAttendee](images/PostAttendees.png)
@@ -55,7 +55,7 @@ and handles relationships between organizers, venues, events, and attendees.
 ![PutBooking](images/PutBooking.png)
 
 ### Get total revenue for an event
-![GetRevenue](images/GetRevenue.png)
+![GetRevenue](images/GetRevenue2.png)
 
 ### Get all bookings for an attendee
 ![GetBookingsForAttendees](images/GetBookingsForAttendees.png)
